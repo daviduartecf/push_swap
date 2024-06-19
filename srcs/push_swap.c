@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:29:25 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/19 10:39:14 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:50:29 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 	int	len = 0;
 
 	i = 0;
+
 	if (stack_a->len > stack_b->len)
 		len = stack_a->len;
 	else
@@ -55,12 +56,33 @@ t_stack	*stack_init()
 	return (stack);
 }
 
+void free_stack_array(int **array_ptr)
+{
+	if (*array_ptr != NULL)
+	{
+		free(*array_ptr);
+		*array_ptr = NULL;
+	}
+}
+
 void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	free(stack_a->stack);
-	free(stack_a);
-	free(stack_b->stack);
-	free(stack_b);
+	if (stack_a)
+	{
+		if (stack_a->len > 0)
+			free_stack_array(&(stack_a->stack));
+		stack_a->stack = NULL;
+		free(stack_a);
+		stack_a = NULL;
+	}
+	if (stack_b)
+	{
+		if (stack_b->len > 0)
+			free_stack_array(&(stack_b->stack));
+		stack_b->stack = NULL;
+		free(stack_b);
+		stack_b = NULL;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -80,18 +102,10 @@ int	main(int argc, char *argv[])
 	{
 		ft_printf("Let's see!");
 	}
-	print_stacks(stack_a, stack_b);
-	//sa(stack_a);
-	//sb(stack_b);
-	// pb(&stack_a, &stack_b);
-	// ft_printf("\n");
-	// print_stacks(stack_a, stack_b);
-	// pb(&stack_a, &stack_b);
-	// ft_printf("\n");
-	// print_stacks(stack_a, stack_b);
-	rra(stack_a);
-	ft_printf("\n");
-	print_stacks(stack_a, stack_b);
+	//print_stacks(stack_a, stack_b);
+	sort_stack(&stack_a, &stack_b);
+	//ft_printf("\n");
+	//print_stacks(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);
 	return (0);
 }

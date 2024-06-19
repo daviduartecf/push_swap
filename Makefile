@@ -3,7 +3,7 @@ NAME = push_swap
 FT_PRINTF = ft_printf/libftprintf.a
 FLAGS = -Wall -Werror -Wextra
 SRCS = srcs/push_swap.c srcs/parse_input.c srcs/moves_swap.c srcs/move_helpers.c \
-	srcs/moves_push.c srcs/moves_rotate.c
+	srcs/moves_push.c srcs/moves_rotate.c srcs/sorting.c
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}

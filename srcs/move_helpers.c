@@ -6,11 +6,16 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:00:07 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/18 17:55:35 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:17:30 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	print_move(char *move)
+{
+	ft_printf("%s\n", move);
+}
 
 t_stack	*ft_realloc(t_stack *stack, int len)
 {
@@ -37,7 +42,7 @@ t_stack	*ft_realloc(t_stack *stack, int len)
 	return (stack);
 }
 
-t_stack	*copy_stack(t_stack **stack, int len, int value, int flag)
+t_stack	*copy_stack(t_stack *stack, int len, int value, int flag)
 {
 	int		i;
 	int		j;
@@ -48,18 +53,22 @@ t_stack	*copy_stack(t_stack **stack, int len, int value, int flag)
 	result = (t_stack *)malloc(sizeof(t_stack));
 	if (!result)
 		exit(1);
-	result->stack = (int *)ft_calloc(len, sizeof(int));
-	if (!result->stack)
+	if (len > 0)
 	{
-		ft_printf("Memory allocation failed\n");
-		exit(1);
+		result->stack = (int *)malloc(len * sizeof(int));
+		if (!result->stack)
+		{
+			ft_printf("Memory allocation failed\n");
+			free(result);
+			exit(1);
+		}
+		if (flag == 1)
+			result->stack[i++] = value;
+		else if (flag == 0)
+			j ++;
+		while (i < len && j < stack->len)
+			result->stack[i++] = stack->stack[j++];
 	}
-	if (flag == 1)
-		result->stack[i++] = value;
-	else if (flag == 0)
-		j ++;
-	while (i < len && j < (*stack)->len)
-		result->stack[i++] = (*stack)->stack[j++];
 	result->len = len;
 	return (result);
 }
