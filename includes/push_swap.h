@@ -24,8 +24,12 @@ t_stack	*copy_stack(t_stack **stack, int len, int value, int flag);
 t_stack	*ft_realloc(t_stack *stack, int len);
 
 /* MOVES FUNCTIONS */
+void	r(t_stack *stack);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
+void	rrab(t_stack *stack);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
 void	pb(t_stack **stack_a, t_stack **stack_b);
 

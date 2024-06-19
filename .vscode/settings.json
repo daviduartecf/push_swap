@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"ft_printf.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"push_swap.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:29:25 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/18 17:55:13 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:39:14 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,13 @@ int	main(int argc, char *argv[])
 	print_stacks(stack_a, stack_b);
 	//sa(stack_a);
 	//sb(stack_b);
-	pb(&stack_a, &stack_b);
-	ft_printf("\n");
-	print_stacks(stack_a, stack_b);
-	pb(&stack_a, &stack_b);
-	sb(stack_b);
+	// pb(&stack_a, &stack_b);
+	// ft_printf("\n");
+	// print_stacks(stack_a, stack_b);
+	// pb(&stack_a, &stack_b);
+	// ft_printf("\n");
+	// print_stacks(stack_a, stack_b);
+	rra(stack_a);
 	ft_printf("\n");
 	print_stacks(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);
