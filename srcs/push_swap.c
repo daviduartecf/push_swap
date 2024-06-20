@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:29:25 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/19 16:50:29 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:03:54 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 		i ++;
 	}
 	ft_printf("-- --\n");
-	ft_printf("A   B\n");
-	ft_printf("A: %d   B: %d\n", stack_a->len, stack_b->len);
 }
 
 t_stack	*stack_init()
@@ -103,7 +101,10 @@ int	main(int argc, char *argv[])
 		ft_printf("Let's see!");
 	}
 	//print_stacks(stack_a, stack_b);
-	sort_stack(&stack_a, &stack_b);
+	if (stack_a->len <= 5)
+		sort_stack(&stack_a, &stack_b);
+	else if (stack_a->len > 5)
+		sort_large(&stack_a, &stack_b);
 	//ft_printf("\n");
 	//print_stacks(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);

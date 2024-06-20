@@ -41,5 +41,6 @@ void	pb(t_stack **stack_a, t_stack **stack_b);
 /* SORT */
 int	is_sorted(t_stack *stack);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_large(t_stack **stack_a, t_stack **stack_b);
 
 #endif
