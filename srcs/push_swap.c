@@ -83,6 +83,37 @@ void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+void	parse_large_input(t_stack *stack_a, char **argv, int len, t_stack *stack_b)
+{
+	int i;
+
+	i = 1;
+	stack_a->stack = ft_calloc(len, sizeof(int));
+	if (stack_a->stack == NULL)
+	{
+		free(stack_a);
+		exit(1);
+	}
+	stack_a->len = len;
+	while (argv[i])
+	{
+		if (!ft_str_isdigit(argv[i]))
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_stacks(stack_a, stack_b);
+			exit(1);
+		}
+		stack_a->stack[i - 1] = ft_atoi(argv[i]);
+		i ++;
+	}
+	if (!valid_arguments(stack_a->stack, stack_a->len))
+	{
+		ft_putstr_fd("Error\n", 2);
+		free_stacks(stack_a, stack_b);
+		exit(1);
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -98,14 +129,14 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		ft_printf("Let's see!");
+		parse_large_input(stack_a, argv, (argc - 1), stack_b);
+		//ft_printf("Let's see!");
 	}
 	//print_stacks(stack_a, stack_b);
-	if (stack_a->len <= 5)
-		sort_stack(&stack_a, &stack_b);
-	else if (stack_a->len > 5)
+	if (stack_a->len <= 3)
+		sort_stack(&stack_a);
+	else if (stack_a->len > 3)
 		sort_large(&stack_a, &stack_b);
-	//ft_printf("\n");
 	//print_stacks(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);
 	return (0);

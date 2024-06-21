@@ -19,9 +19,6 @@ void	print_move(char *move)
 
 t_stack	*ft_realloc(t_stack *stack, int len)
 {
-	int	i;
-
-	i = 0;
 	if (stack != NULL)
 		free(stack);
 	stack = NULL;

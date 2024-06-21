@@ -13,6 +13,16 @@ typedef struct s_stack
 	int	*stack;
 	int	len;
 }	t_stack;
+
+typedef struct s_cheapest
+{
+	int	min_cost;
+	int value;
+	int cost_a;
+	int position_b;
+	int cost_b;
+	int total_cost;
+}	t_cheapest;
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 /* PARSING INPUT FUNCTIONS */
 int		ft_str_isdigit(char *str);
@@ -40,7 +50,7 @@ void	pb(t_stack **stack_a, t_stack **stack_b);
 
 /* SORT */
 int	is_sorted(t_stack *stack);
-void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_stack(t_stack **stack_a);
 void	sort_large(t_stack **stack_a, t_stack **stack_b);
 
 #endif
