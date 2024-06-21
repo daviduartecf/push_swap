@@ -43,6 +43,7 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
+void	ss(t_stack *stack_a, t_stack *stack_b);
 void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
@@ -52,5 +53,14 @@ void	pb(t_stack **stack_a, t_stack **stack_b);
 int	is_sorted(t_stack *stack);
 void	sort_stack(t_stack **stack_a);
 void	sort_large(t_stack **stack_a, t_stack **stack_b);
+
+/* FIND CHEAPEST */
+int get_max_index(t_stack *stack);
+int get_min_index(t_stack *stack);
+int	is_min(t_stack *stack, int value);
+int	is_max(t_stack *stack, int value);
+int	calculate_cost(int index, int len);
+int	position_in_stackb(t_stack *stack, int value);
+int	find_cheapest(t_stack *stack_a, t_stack *stack_b, int *a_index, int *b_position);
 
 #endif

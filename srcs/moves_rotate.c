@@ -50,26 +50,27 @@ void	rb(t_stack *stack)
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	ra(stack_a);
-	rb(stack_b);
-}
-
-/* void	rrab(t_stack *stack)
-{
 	int	i;
 	int	temp;
 
-	if (stack->len <= 1)
-		return ;
-	i = stack->len - 1;
-	temp = stack->stack[stack->len - 1];
-	while (i > 0)
+	i = 0;
+	temp = stack_a->stack[0];
+	while (i < stack_a->len - 1)
 	{
-		stack->stack[i] = stack->stack[i - 1];
-		i --;
+		stack_a->stack[i] = stack_a->stack[i + 1];
+		i ++;
 	}
-	stack->stack[0] = temp;
-} */
+	stack_a->stack[stack_a->len - 1] = temp;
+	i = 0;
+	temp = stack_b->stack[0];
+	while (i < stack_b->len - 1)
+	{
+		stack_b->stack[i] = stack_b->stack[i + 1];
+		i ++;
+	}
+	stack_b->stack[stack_b->len - 1] = temp;
+	print_move("rr");
+}
 
 void	rra(t_stack *stack)
 {
@@ -109,7 +110,24 @@ void	rrb(t_stack *stack)
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	rra(stack_a);
-	rra(stack_b);
-	print_move("rr");
+	int	i;
+	int	temp;
+
+	i = stack_a->len - 1;
+	temp = stack_a->stack[stack_a->len - 1];
+	while (i > 0)
+	{
+		stack_a->stack[i] = stack_a->stack[i - 1];
+		i --;
+	}
+	stack_a->stack[0] = temp;
+	i = stack_b->len - 1;
+	temp = stack_b->stack[stack_b->len - 1];
+	while (i > 0)
+	{
+		stack_b->stack[i] = stack_b->stack[i - 1];
+		i --;
+	}
+	stack_b->stack[0] = temp;
+	print_move("rrr");
 }
