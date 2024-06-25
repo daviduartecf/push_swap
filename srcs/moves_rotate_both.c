@@ -6,11 +6,15 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:59:55 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/25 10:58:05 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 12:40:07 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/* ROTATE BOTH STACKS IF POSSIBLE */
+/*	it only rotates both if both requisites are met:
+		-index a AND b are higher than 0 (the number is not in index 0) */
 
 void	rot_both(t_stack **stack_a, t_stack **stack_b, int *a_ind, int *b_pos)
 {

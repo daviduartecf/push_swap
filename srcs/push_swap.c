@@ -6,38 +6,11 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:29:25 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/25 10:51:26 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:52:41 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	if (stack_a->len > stack_b->len)
-		len = stack_a->len;
-	else
-		len = stack_b->len;
-	while (i < len)
-	{
-		if (i < stack_a->len)
-			ft_printf("%d  ", stack_a->stack[i]);
-		else
-			ft_printf("   ");
-		if (i < stack_b->len)
-			ft_printf("%d", stack_b->stack[i]);
-		else
-			ft_printf("   ");
-		ft_printf("\n");
-		i ++;
-	}
-	ft_printf("-- --\n");
-}
 
 t_stack	*stack_init(void)
 {
@@ -88,10 +61,10 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = stack_init();
-	stack_b = stack_init();
 	if (argc == 1)
 		exit(0);
+	stack_a = stack_init();
+	stack_b = stack_init();
 	if (argc == 2)
 		get_stack(stack_a, argv[1], &stack_a->len, stack_b);
 	else

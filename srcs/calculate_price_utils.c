@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 17:56:56 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/25 10:41:39 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:37:07 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,31 @@ int	is_max(t_stack *stack, int value)
 		i ++;
 	}
 	return (1);
+}
+
+/* BEST POSITION FOR A NUMBER IN STACK A */
+/*	calculates the best position for a number of stack B to be placed in stack A
+	the best position should be bellow a smaller value and above a larger value
+	this ensures the ascending order in stack A */
+
+int	position_in_stacka(t_stack *stack, int value)
+{
+	int	i;
+	int	max_index;
+	int	min_index;
+
+	i = 0;
+	min_index = get_min_index(stack);
+	max_index = get_max_index(stack);
+	if (is_min(stack, value))
+		return (min_index);
+	if (is_max(stack, value))
+		return (max_index + 1);
+	while (i < stack->len - 1)
+	{
+		if (stack->stack[i] < value && value < stack->stack[i + 1])
+			return (i + 1);
+		i ++;
+	}
+	return (stack->len);
 }

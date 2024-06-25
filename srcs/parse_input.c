@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:24:50 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/25 10:51:56 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:55:16 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_str_isdigit(char *str)
 			return (0);
 	}
 	number = ft_atol(str);
-	if (number > INT_MAX || number < INT_MIN)
+	if (number > 2147483647 || number < -2147483648)
 		return (0);
 	return (1);
 }

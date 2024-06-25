@@ -15,7 +15,7 @@ ${FT_PRINTF}:
 ${NAME}: ${OBJS} ${FT_PRINTF}
 	@echo "\033[0;32mCompiling program...\033[0m"
 	@${CC} ${OBJS} ${MLX} ${FT_PRINTF} ${FLAGS} -o ${NAME}
-	@echo "\033[0;32mFDF successfully compiled.\033[0m"
+	@echo "\033[0;32mpush_swap successfully compiled.\033[0m"
 
 %.o: %.c
 	@${CC} -c $< -o $@ -Wall -Werror -Wextra
