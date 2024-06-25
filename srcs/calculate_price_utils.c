@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_price_utils.c                             :+:      :+:    :+:   */
+/*   calculate_price_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 17:56:56 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/21 17:57:26 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:41:39 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int get_max_index(t_stack *stack)
+int	get_max_index(t_stack *stack)
 {
 	int	i;
-	int max_index;
+	int	max_index;
 
 	i = 1;
 	max_index = 0;
@@ -28,10 +28,10 @@ int get_max_index(t_stack *stack)
 	return (max_index);
 }
 
-int get_min_index(t_stack *stack)
+int	get_min_index(t_stack *stack)
 {
 	int	i;
-	int min_index;
+	int	min_index;
 
 	i = 1;
 	min_index = 0;
@@ -71,4 +71,3 @@ int	is_max(t_stack *stack, int value)
 	}
 	return (1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:20 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/19 15:26:28 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:00:27 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,6 @@ void	rb(t_stack *stack)
 	print_move("rb");
 }
 
-void	rr(t_stack *stack_a, t_stack *stack_b)
-{
-	int	i;
-	int	temp;
-
-	i = 0;
-	temp = stack_a->stack[0];
-	while (i < stack_a->len - 1)
-	{
-		stack_a->stack[i] = stack_a->stack[i + 1];
-		i ++;
-	}
-	stack_a->stack[stack_a->len - 1] = temp;
-	i = 0;
-	temp = stack_b->stack[0];
-	while (i < stack_b->len - 1)
-	{
-		stack_b->stack[i] = stack_b->stack[i + 1];
-		i ++;
-	}
-	stack_b->stack[stack_b->len - 1] = temp;
-	print_move("rr");
-}
-
 void	rra(t_stack *stack)
 {
 	int	i;
@@ -106,28 +82,4 @@ void	rrb(t_stack *stack)
 	}
 	stack->stack[0] = temp;
 	print_move("rrb");
-}
-
-void	rrr(t_stack *stack_a, t_stack *stack_b)
-{
-	int	i;
-	int	temp;
-
-	i = stack_a->len - 1;
-	temp = stack_a->stack[stack_a->len - 1];
-	while (i > 0)
-	{
-		stack_a->stack[i] = stack_a->stack[i - 1];
-		i --;
-	}
-	stack_a->stack[0] = temp;
-	i = stack_b->len - 1;
-	temp = stack_b->stack[stack_b->len - 1];
-	while (i > 0)
-	{
-		stack_b->stack[i] = stack_b->stack[i - 1];
-		i --;
-	}
-	stack_b->stack[0] = temp;
-	print_move("rrr");
 }

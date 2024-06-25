@@ -6,9 +6,8 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 17:58:56 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/21 17:59:26 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:41:46 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
