@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 09:29:25 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/25 15:52:41 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:33:09 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ int	main(int argc, char *argv[])
 		get_stack(stack_a, argv[1], &stack_a->len, stack_b);
 	else
 		parse_args(stack_a, argv, (argc - 1), stack_b);
+	if (is_sorted(stack_a))
+	{
+		free_stacks(stack_a, stack_b);
+		return (0);
+	}
 	if (stack_a->len > 1)
 		sort_stack(&stack_a, &stack_b);
 	free_stacks(stack_a, stack_b);
