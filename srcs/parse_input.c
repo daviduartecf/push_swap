@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:24:50 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/18 16:05:39 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:55:16 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_str_isdigit(char *str)
 {
-	int	i;
+	int		i;
 	long	number;
 
 	i = 0;
@@ -31,7 +31,7 @@ int	ft_str_isdigit(char *str)
 			return (0);
 	}
 	number = ft_atol(str);
-	if (number > INT_MAX || number < INT_MIN)
+	if (number > 2147483647 || number < -2147483648)
 		return (0);
 	return (1);
 }
@@ -57,13 +57,22 @@ int	valid_arguments(int *stack, int len)
 	return (1);
 }
 
-void	get_stack_from_argument(t_stack *stack_a, char *argument, int *len, t_stack *stack_b)
+void	error_msg(t_stack *stack_a, t_stack *stack_b, char **array, int len)
+{
+	if (array != NULL && len != 0)
+		free_array(array, len);
+	ft_putstr_fd("Error\n", 2);
+	free_stacks(stack_a, stack_b);
+	exit(1);
+}
+
+void	get_stack(t_stack *stack_a, char *arg, int *len, t_stack *stack_b)
 {
 	char	**argument_array;
 	int		i;
 
 	i = -1;
-	argument_array = ft_split_and_len(argument, ' ', len);
+	argument_array = ft_split_and_len(arg, ' ', len);
 	stack_a->stack = ft_calloc(stack_a->len, sizeof(int));
 	if (stack_a->stack == NULL)
 	{
@@ -73,20 +82,33 @@ void	get_stack_from_argument(t_stack *stack_a, char *argument, int *len, t_stack
 	while (++i < stack_a->len)
 	{
 		if (!ft_str_isdigit(argument_array[i]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			free_array(argument_array, *len);
-			free_stacks(stack_a, stack_b);
-			exit(1);
-		}
+			error_msg(stack_a, stack_b, argument_array, *len);
 		stack_a->stack[i] = ft_atoi(argument_array[i]);
 	}
 	if (!valid_arguments(stack_a->stack, stack_a->len))
+		error_msg(stack_a, stack_b, argument_array, *len);
+	free_array(argument_array, *len);
+}
+
+void	parse_args(t_stack *stack_a, char **argv, int len, t_stack *stack_b)
+{
+	int	i;
+
+	i = 1;
+	stack_a->stack = ft_calloc(len, sizeof(int));
+	if (stack_a->stack == NULL)
 	{
-		ft_putstr_fd("Error\n", 2);
-		free_array(argument_array, *len);
-		free_stacks(stack_a, stack_b);
+		free(stack_a);
 		exit(1);
 	}
-	free_array(argument_array, *len);
+	stack_a->len = len;
+	while (argv[i])
+	{
+		if (!ft_str_isdigit(argv[i]))
+			error_msg(stack_a, stack_b, NULL, 0);
+		stack_a->stack[i - 1] = ft_atoi(argv[i]);
+		i ++;
+	}
+	if (!valid_arguments(stack_a->stack, stack_a->len))
+		error_msg(stack_a, stack_b, NULL, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:00:07 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/19 13:17:30 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:43:58 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ void	print_move(char *move)
 
 t_stack	*ft_realloc(t_stack *stack, int len)
 {
-	int	i;
-
-	i = 0;
 	if (stack != NULL)
 		free(stack);
 	stack = NULL;
@@ -42,6 +39,14 @@ t_stack	*ft_realloc(t_stack *stack, int len)
 	return (stack);
 }
 
+void	mem_error(t_stack *result, int flag)
+{
+	if (flag == 1)
+		free(result);
+	ft_printf("Memory allocation failed\n");
+	exit(1);
+}
+
 t_stack	*copy_stack(t_stack *stack, int len, int value, int flag)
 {
 	int		i;
@@ -52,16 +57,12 @@ t_stack	*copy_stack(t_stack *stack, int len, int value, int flag)
 	j = 0;
 	result = (t_stack *)malloc(sizeof(t_stack));
 	if (!result)
-		exit(1);
+		mem_error(result, 0);
 	if (len > 0)
 	{
 		result->stack = (int *)malloc(len * sizeof(int));
 		if (!result->stack)
-		{
-			ft_printf("Memory allocation failed\n");
-			free(result);
-			exit(1);
-		}
+			mem_error(result, 1);
 		if (flag == 1)
 			result->stack[i++] = value;
 		else if (flag == 0)

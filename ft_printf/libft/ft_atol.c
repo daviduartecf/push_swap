@@ -6,7 +6,7 @@
 /*   By: daduarte <daduarte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 09:04:15 by daduarte          #+#    #+#             */
-/*   Updated: 2024/06/18 14:22:12 by daduarte         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:10:31 by daduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 long	ft_atol(const char *str)
 {
-	int	i;
-	int	neg;
+	int		i;
+	int		neg;
 	long	number;
 
 	i = 0;
